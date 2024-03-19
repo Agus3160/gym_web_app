@@ -1,0 +1,57 @@
+<!-- base.html -->
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Gym{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/extend.css' %}">
+</head>
+<body class="bg-dark">
+  
+  <nav class="navbar navbar-expand-lg shadow-lg border-bottom border-dark-subtle navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand mainText" href="#"><img width="48" class="rounded-circle" src="{% static 'logo.png' %}"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title mainText" id="offcanvasDarkNavbarLabel">Menu</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">SignUp</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sign-in">SignIn</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+    <main class="container-sm my-3">
+        {% block content %}
+        <!-- This block will be overridden in child templates -->
+        {% endblock %}
+    </main>
+
+    <footer class="mainButton m-0 p-4 h-100">
+      <div class="d-flex justify-content-center align-items-center">
+        <p class="m-0">&copy; 2024 Gym</p>
+      </div>
+    </footer>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>
