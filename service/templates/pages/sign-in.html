@@ -6,9 +6,13 @@
 
 {% block content %}
   <div class="d-flex flex-column gap-3">
-    <form>
-      <input type="text">
-      <button>Send</button>
+    <h1 class="mainText text-center m-0">Sign In</h1>
+    <form method="POST" action="{% url 'sign-in' %}" class=" d-flex flex-column gap-3 needs-validation" >
+      {% include 'layouts/form.html'%}
     </form>
+    <div class="d-flex flex-sm-row gap-2 flex-column justify-content-between text-center">
+      <a class="mainText" href="{% url 'sign-up' %}">Don't have an account?</a>
+      <a class="mainText" href="#">Do you forget your password?</a>
+    </div>
   </div>
 {% endblock %}

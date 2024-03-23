@@ -1,0 +1,15 @@
+<!-- signUp.html -->
+
+{% extends 'base/base.html' %}
+
+{% block title %}SignIn{% endblock %}
+
+{% block content %}
+  <div class="d-flex flex-column gap-3">
+    <h1 class="mainText text-center m-0 ">Sign Up</h1>
+    <form method="POST" action="{% url 'sign-up' %}" class=" d-flex flex-column gap-3 needs-validation">
+      {% include 'layouts/form.html'%}
+    </form>
+    <a class="mainText text-center" href="{% url 'sign-in' %}">Do you have an account?</a>
+  </div>
+{% endblock %}

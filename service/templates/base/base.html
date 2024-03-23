@@ -3,7 +3,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,11 +11,11 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/extend.css' %}">
 </head>
-<body class="bg-dark">
+<body class="d-flex flex-column" style="height: 100dvh;">
   
-  <nav class="navbar navbar-expand-lg shadow-lg border-bottom border-dark-subtle navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg shadow-lg border-bottom border-dark-subtle navbar-dark bg-dark h-[72px]">
     <div class="container-fluid">
-      <a class="navbar-brand mainText" href="#"><img width="48" class="rounded-circle" src="{% static 'logo.png' %}"></a>
+      <a class="navbar-brand mainText" href="{% url 'home' %}"><img width="48" class="rounded-circle" src="{% static 'logo.png' %}"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -27,27 +27,42 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="#">Home</a>
+              <a class="nav-link" href="{% url 'home' %}">Home</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">SignUp</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="sign-in">SignIn</a>
-            </li>
+            {% if user.is_authenticated %}
+              {% if user.groups.all.0.name == 'ADMIN' %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'staff-clients' %}">Admin</a>
+                </li>
+              {% endif %}
+              {% if user.groups.all.0.name == 'CLIENT' %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'staff-clients' %}">Me</a>
+                </li>
+              {% endif %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">LogOut</a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'sign-up' %}">SignUp</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="sign-in">SignIn</a>
+              </li>
+            {% endif %}
           </ul>
         </div>
       </div>
     </div>
   </nav>
-
-    <main class="container-sm my-3">
+    <main class="container-sm my-3 d-flex flex-column justify-content-center" style="flex: 1;">
         {% block content %}
         <!-- This block will be overridden in child templates -->
         {% endblock %}
     </main>
 
-    <footer class="mainButton m-0 p-4 h-100">
+    <footer class="mainButton m-0 p-4 w-100">
       <div class="d-flex justify-content-center align-items-center">
         <p class="m-0">&copy; 2024 Gym</p>
       </div>
