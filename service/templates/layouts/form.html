@@ -1,4 +1,11 @@
 {% block form-layout %}
+
+    {% if form.non_field_errors %}
+      {% for error in form.non_field_errors %}
+        <div class="invalid-feedback d-block text-center"><i class="bi bi-exclamation-circle"></i>{{ error }}</div>
+        {% endfor %}
+    {% endif %}
+
     {% csrf_token %}
     {% for fields in form %}
       <div class="form-group">
@@ -12,4 +19,5 @@
       </div>
     {% endfor %}
     <button type="submit" class="mainButton btn w-50 m-auto rounded">{{submit_text}}</button> 
+
 {% endblock %}

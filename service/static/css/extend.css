@@ -1,6 +1,12 @@
 .mainButton{
   background-color: #ff8000;
+  border: none;
+  outline: none;
   color: #fff;
+}
+
+.mainBackground{
+  background-color: #ff8000;
 }
 
 .onHover:hover{

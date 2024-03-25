@@ -1,0 +1,68 @@
+<!-- membership.html -->
+
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block title %}Membership{% endblock %}
+
+{% block content %}
+  <div class="d-flex flex-column gap-3">
+    <h1 class="mainText text-center m-0">Memberships</h1>
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="card h-100 d-flex flex-column">
+          <div class="card-body">
+            <div class="card-title text-center">
+              <h6 class="mainText">Weekly</h6>
+              <span class="font-bold fw-bold fs-2">$ 19.99</span>
+            </div>
+            <ul class="list-unstyled flex-grow-1 text-center">
+              <li>All machines access</li>
+              <li>Don't include personal training</li>
+              <li>Don't include diet support</li>
+              <li>Don't include group classes</li>
+            </ul>
+          </div>
+          <a class="p-2 text-center w-100 mainButton text-decoration-none mt-auto">Purchase</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 d-flex flex-column">
+          <div class="card-body">
+            <div class="card-title text-center">
+              <h6 class="mainText">Month</h6>
+              <span class="font-bold fw-bold fs-2">$ 24.99</span>
+            </div>
+            <ul class="list-unstyled flex-grow-1 text-center">
+              <li>All machines access</li>
+              <li>Don't include personal training</li>
+              <li>Don't include diet support</li>
+              <li>Don't include group classes</li>
+            </ul>
+          </div>
+          <a class="p-2 text-center w-100 mainButton text-decoration-none mt-auto">Purchase</a>
+        </div>
+      </div><div class="col-md-4">
+        <div class="card h-100 d-flex flex-column">
+          <div class="card-body">
+            <div class="card-title text-center">
+              <h6 class="mainText">Year</h6>
+              <span class="font-bold fw-bold fs-2">$ 199.99</span>
+            </div>
+            <ul class="list-unstyled flex-grow-1 text-center">
+              <li>All machines access</li>
+              <li>Don't include personal training</li>
+              <li>Don't include diet support</li>
+              <li>Don't include group classes</li>
+            </ul>
+          </div>
+          <form action="{% url 'create-checkout-session' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="p-2 text-center w-100 text-decoration-none mt-auto mainButton">Purchase</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

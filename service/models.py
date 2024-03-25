@@ -75,8 +75,8 @@ class ClientInfo(models.Model):
     phone = models.CharField(max_length=20, blank=False, null=False)
     ci = models.CharField(max_length=255, blank=False, null=False)
     emergency_contact = models.CharField(max_length=255, blank=False, null=False)
-    membership = models.CharField(max_length=10, default='I',choices=MEMBERSHIP_STATE, blank=False, null=False)
-    membership_Type = models.CharField(max_length=10, blank=False, null=False)
+    membership_state = models.CharField(max_length=10, default='I',choices=MEMBERSHIP_STATE, blank=False, null=False)
+    membership_Type = models.CharField(max_length=10, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, blank=False, null=False)
     updated_at = models.DateTimeField(auto_now_add=True, blank=False, null=False)
 
